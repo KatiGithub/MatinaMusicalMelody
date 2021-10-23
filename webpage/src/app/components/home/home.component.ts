@@ -31,25 +31,27 @@ export class HomeComponent implements OnInit {
 
   submitMood(){
     let mood = this.mood_formcontrol.value;
-    let channelID;
-    console.log(mood);
-    // this.express.check()
-    //   .then((value)=> {
+    // let channelID;
+    // console.log(mood);
+    // // this.express.check()
+    // //   .then((value)=> {
+    // //     console.log(value);
+    // //   })
+    // //   .catch((err) => 
+    // //   console.log(err))
+    // //   ;
+    // this.express.getChannelByMood(mood)
+    //   .then((value) => {
     //     console.log(value);
+    //     channelID = value.json().results;
     //   })
-    //   .catch((err) => 
-    //   console.log(err))
-    //   ;
-    this.express.getChannelByMood(mood)
-      .then((value) => {
-        console.log(value);
-        channelID = value.json().results;
-      })
-      .catch((err) => {
-        console.log('error here!!!');
-        console.log(err);
-      });
-    console.log(channelID);
-    // this.router.navigate(['channel/' + channelID]);
+    //   .catch((err) => {
+    //     console.log('error here!!!');
+    //     console.log(err);
+    //   });
+    // console.log(channelID);
+    // // this.router.navigate(['channel/' + channelID]);
+
+    this.router.navigate(['player/' + mood])
   }
 }

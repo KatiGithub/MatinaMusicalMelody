@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChannelComponent } from './components/channel/channel.component';
 import { HomeComponent } from './components/home/home.component';
+import { PlayerComponent } from './components/player/player.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'mood',
     component: ChannelComponent,
+  },
+  {
+    path: 'player/:mood',
+    component: PlayerComponent
   }
 ];
 
