@@ -8,6 +8,7 @@ router.use(function timeLog (req, res, next) {
     console.log('Time: ', Date.now())
     next()
 })
+
 router.get('/channels/:mood', controllers.getAudioChannels);
 router.get('/:mood', controllers.check)
 module.exports = router;
