@@ -12,6 +12,20 @@
     animation: gradient 15s infinite;
 }
 
+mat-slider {
+    position: absolute;
+    align-self: center;
+    right: 2rem;
+    height: 300px;
+}
+
+.slider{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;

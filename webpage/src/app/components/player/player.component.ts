@@ -38,7 +38,7 @@ export class PlayerComponent implements OnInit {
           this.mood = value.mood;
           console.log(this.mood);
           let channel_token = this.ChannelService.getChannels()[this.mood];
-          this.url = `http://localhost:8001/live/${channel_token}/index.mpd`;
+          this.url = `http://e130-183-88-56-193.ngrok.io/live/${channel_token}/index.mpd`;
           console.log(this.url);
         })
       })

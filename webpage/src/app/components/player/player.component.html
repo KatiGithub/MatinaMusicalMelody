@@ -2,10 +2,12 @@
 
 <div class="container" *ngIf="this.url != ''" (click)="this.toggleSong()">
     <mat-icon id="back_button" (click)="this.router.navigate(['/home'])">arrow_back</mat-icon>
-    <div>
+    <div class="slider">
         <mat-icon id="play_button">play_arrow</mat-icon>
+        <mat-slider vertical aria-label="unit(s)" (input)="volume = $event.value" [value] = "volume"></mat-slider>
     </div>
-
+    
+    
     <vg-player id="player">
         <audio #audioplayer #vgDash="vgDash" #media [vgMedia]="media" [vgDash]="this.url" type="audio/mp3" crossorigin controls autoplay>
         </audio>
