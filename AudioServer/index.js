@@ -16,8 +16,10 @@ startFunc().then(() => {
         var channels = [];
         moods.forEach(value => {
             new TrackRepository().getSongIdsForMood(value).then((songidxs) => {
-                channels.push(new Channel(songidxs));
-                console.log(songidxs);
+                if(songidxs.length > 0) {
+                    channels.push(new Channel(songidxs));
+                    console.log(songidxs);
+                }
             });
         })
     });

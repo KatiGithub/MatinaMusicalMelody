@@ -26,11 +26,10 @@ class MoodRepository {
     }
 
     async updateChannelTokenFromTrackId(songid, channel_token) {
-        moodid = new TrackRepository().getMoodFromTrackId(songid);
-
-        const query = `UPDATE public."tblMood" SET channel_token = '${channel_token}' WHERE mooidid = ${moodid};`;
-
-        await pool.query(query);
+        new TrackRepository().getMoodFromTrackId(songid).then(async (moodid) => {
+            const query = `UPDATE public."tblMood" SET channel_token = '${channel_token}' WHERE moodid = ${moodid};`;
+            await pool.query(query);
+        });
     }
 }
 

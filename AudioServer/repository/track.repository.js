@@ -22,7 +22,7 @@ class TrackRepository {
         var query = `SELECT moodid FROM public."tracks" WHERE trackid = ${trackid};`;
 
         const res = await pool.query(query);
-        return res.rows[0]
+        return res.rows[0]['moodid'];
     }
 }
 
