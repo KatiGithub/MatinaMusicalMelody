@@ -1,9 +1,9 @@
 const dbConfig = {
     user: 'postgres',
-    host: '4.tcp.ngrok.io',
+    host: process.env.DB_HOSTNAME,
+    port: process.env.DP_PORT,
     database: 'MatinaMusicalMelody',
     password: 'music_2001',
-    port: 17293
 };
 
 module.exports = dbConfig;

@@ -12,8 +12,8 @@
     position: relative;
     top: 30%;
     margin: auto;
-    /* text-align: center;    */
-    /* justify-content: center; */
+    text-align: center;   
+    justify-content: center;
     align-items: center;
 }
 
@@ -34,6 +34,7 @@ width:fit-content;
 
 .btngroup{
     display: flex;
+    margin-top: 40px;
 }
 
 .btn{

@@ -1,19 +1,25 @@
-<head>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-</head>
+
 <div class="container">
     <div class="field">
-        <h1 class="title">How are you feeling today?</h1>
+        <h1 class="mat-display-4">How are you feeling today?</h1>
+        <!-- <h3>{{channelID}}</h3> -->
         <div class="fillmood">
-            <form>
-                <mat-form-field class="input" appearance="fill">
+            <div>
+                <!-- <mat-form-field class="input" appearance="fill">
                   <mat-label>Tell us your mood: </mat-label>
-                  <input matInput placeholder="Ex. Happy">
-                </mat-form-field>
-            </form>
-            <button class="btn" mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="submitMood()">
-                <mat-icon>navigate_next</mat-icon>
+                  <input matInput type="text" placeholder="Ex. Happy" [formControl]="mood_formcontrol"/>
+                </mat-form-field> -->
+                <mat-form-field appearance="fill" class="input">
+                    <mat-label>Ex. Happy</mat-label>
+                    <mat-select  [formControl]="this.mood_formcontrol">
+                      <mat-option *ngFor="let mood of moods" [value]="mood.value" >
+                        {{mood.value}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+            <button class="btn" mat-fab color="primary" (click)="submitMood()">
+                <mat-icon>home</mat-icon>
             </button>
         </div>
     </div>

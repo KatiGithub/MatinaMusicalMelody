@@ -21,7 +21,7 @@ export class ChannelComponent implements OnInit {
   }
 
   nextChannel(){
-    console.log("nextchannel button");
+    console.log("next channel button");
   }
 
 }
