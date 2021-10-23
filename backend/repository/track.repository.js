@@ -4,6 +4,24 @@ const dbConfig = require('../configs/database');
 
 const pool = new Pool(dbConfig);
 
+pool.connect((err, client, release)=> {
+    if(err) {
+        console.error('Database connection error', err.stack);
+    }
+    else {
+        console.log('Connected');
+    }
+
+    client.query('LISTEN notify_channelupdate');
+
+    client.on('notification', async (data => {
+        const result = JSON.parse(data.payload);
+        console.log('new tokens: ' + result);
+
+    }))
+    
+})
+
     // const getChannelID = (request, response) => {
     //     pool.query('SELECT * FROM words WHERE mood = @a ORDER BY random() LIMIT 1;', (err, results) => {
     //         if(err) {

@@ -2,15 +2,15 @@ const queries = require('../repository/track.repository');
 
 const methods = {
     async getAudioChannels(req, res) {
-        // try {
-        //     const channelID = await queries.getChannelID(req.params.mood);
-        //     return channelID;
-        // } 
-        // catch(error) {
-        //     console.log(error)
-        // }
-        const id = await queries.getChannelID(req.params.mood);
-        return id;
+        try {
+            const channelID = await queries.getChannelID(req.params.mood);
+            return channelID;
+        } 
+        catch(error) {
+            console.log(error)
+        }
+        // const id = await queries.getChannelID(req.params.mood);
+        // return id;
     }, 
 
     async check(req){
