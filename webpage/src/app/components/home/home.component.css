@@ -1,15 +1,9 @@
 .field {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-    text-align: center;   
-    justify-content: center;
+    height: 100vh;
+    display: flex;
     align-items: center;
-    z-index: 2;
-    position: relative;
-    top: 30%;
-    width: 50%;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .container {
@@ -63,21 +57,24 @@ mat-icon {
 
 #intro {
     font-family: Raleway /* Replace with your custom font */, sans-serif !important; 
+    width: 22ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
     white-space: nowrap;
-    border-right: .12em solid orange;
     overflow: hidden;
-    margin: 10 auto;
-    padding: 5;
-    animation: 
-        typing 3.5s steps(40, end),
-        blink-caret .75s step-end infinite;
+    border-right: 3px solid;
+    font-size: 2em;
 }
 
 @keyframes typing {
     from { width: 0;}
-    to {width: 100%;}
 }
-@keyframes blink-caret {
+/* @keyframes blink-caret {
     from, to {border-color: transparent;}
-    50% {border-color: black;}
+    20% {border-color: black;}
+} */
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
 }

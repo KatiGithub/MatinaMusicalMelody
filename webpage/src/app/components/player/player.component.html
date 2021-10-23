@@ -1,6 +1,13 @@
-<div class="container">
-    <vg-player>
-        <audio #vgDash="vgDash" #media [vgMedia]="media" [vgDash]="'http://localhost:8001/live/N3ho8cjl1/index.mpd'" type="audio/mp3" crossorigin autoplay>
+
+
+<div class="container" *ngIf="this.url != ''" (click)="this.toggleSong()">
+    <mat-icon id="back_button" (click)="this.router.navigate(['/home'])">arrow_back</mat-icon>
+    <div>
+        <mat-icon id="play_button">play_arrow</mat-icon>
+    </div>
+
+    <vg-player id="player">
+        <audio #audioplayer #vgDash="vgDash" #media [vgMedia]="media" [vgDash]="this.url" type="audio/mp3" crossorigin controls autoplay>
         </audio>
     </vg-player>
 </div>

@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChannelService } from 'src/app/service/channel-service/channel.service';
 import { SocketService } from 'src/app/service/socket-service/socket.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 interface currentsong {
   title: string,
@@ -18,12 +18,15 @@ export class PlayerComponent implements OnInit {
   mood = '';
   url = '';
 
-  // @ViewChild('audioplayer') audioelement: HTMLMediaElement;
+  
+
+  @ViewChild('audioplayer') audioelement: ElementRef<HTMLAudioElement>;
 
   constructor(
     private ChannelService: ChannelService,
     private SocketService: SocketService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
     ) { 
 
       this.SocketService.getMessage('songUpdate').subscribe((value: string) => {
@@ -43,6 +46,17 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.SocketService.sendMessage('getSong', '');
+  }
+
+  toggleSong() {
+    let playing = !this.audioelement.nativeElement.muted;
+    if(playing) {
+      this.audioelement.nativeElement.muted = true;
+    } else {
+      this.audioelement.nativeElement.play();
+      this.audioelement.nativeElement.muted = false;
+    }
+    console.log(!playing);
   }
 
 }

@@ -1,10 +1,44 @@
 .container {
+    position: relative;
     height: 100vh;
     width: 100vw;
-    background-color: #fada5f;
+    background: linear-gradient(-45deg, #B65DF0, #F289FB, #FDEFE0, #FADA5F, #B4196D);
+    background-size: 400% 400%;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    animation: gradient 15s infinite;
 }
 
-/* .player {
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#player {
     height: 0;
     width: 0;
-} */
+}
+
+#play_button {
+    height: 15rem;
+    width: 15rem;
+    font-size: 15rem;
+    opacity: 5%;
+}
+
+#back_button {
+    align-self: flex-start;
+    left: 2rem;
+    top: 2rem;
+    position: absolute;
+}

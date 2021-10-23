@@ -23,10 +23,17 @@ export class HomeComponent implements OnInit {
   ) { }
 
   mood_formcontrol = new FormControl();
-  moods: Mood[] = [{value: 'happy'}, {value: 'sad'}, {value: 'heartbroken'}, {value: 'relaxed'}];
+  moods = []
   
 
   ngOnInit(): void {
+    this.express.getMoods().then((value: []) => {
+      value.forEach((value) => {
+        this.moods.push({value: value});
+      })
+
+      console.log(this.moods);
+    })
   }
 
   submitMood(){

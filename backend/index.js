@@ -2,16 +2,16 @@ const dbConfig = require('./configs/database');
 const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
+const { MoodRepository } = require('./repository/mood.repository');
 const socketIO = require('socket.io')(http, {
     cors: {
         origin: '*',
     }
 });
 
-const cors = require("cors");
+// var socket = socketIO.io()
 
-// const pg_client = new pg.Client(dbConfig.host +':'+ dbConfig.port);
-// pg_client.connect();
+const cors = require("cors");
 
 const bodyParser = require('body-parser');
 const route = require('./routers/index');
@@ -21,19 +21,20 @@ const port = 3000;
 
 http.listen(port, () => {
     console.log(`App listening on port ${port}!`);
+    new MoodRepository().listenForEvents().subscribe(() => {
+        new MoodRepository().retrieveMoodsAndChannel_token().then((value) => {
+            socketIO.emit("songUpdate", value);
+        })
+    })
     socketIO.on("connection", (socket) => {
-        console.log('user connected!!');
-        
-        numberOfOnlineUsers++;
-        socketIO.emit('onlineUsers', numberOfOnlineUsers);
+        socket.on('getSong', function() {
+            new MoodRepository().retrieveMoodsAndChannel_token().then((value) => {
+                console.log(value);
+                socket.emit("songUpdate", value);
+            })
+        })
     });
 
-    
-
-    socketIO.on("received", function (data)
-    {
-        console.log(data);
-    });
 });
 
 
@@ -50,4 +51,10 @@ let numberOfOnlineUsers = 0;
 app.get("/", (req, res) => {
     res.json({message: "welcome watsa"});
 });
+
+app.get("/channels", (req, res) => {
+    new MoodRepository().retrieveMoods().then((value) => {
+        res.send(value);
+    })
+})
 

@@ -25,4 +25,8 @@ export class ExpressService {
   check(): Promise<any> {
     return this.http.get(this.APIURL).toPromise();
   }
+
+  getMoods(): Promise<any> {
+    return this.http.get(this.APIURL + '/channels').toPromise();
+  }
 }
