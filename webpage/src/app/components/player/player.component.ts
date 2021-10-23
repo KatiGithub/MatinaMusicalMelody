@@ -1,7 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ChannelService } from 'src/app/service/channel-service/channel.service';
 import { SocketService } from 'src/app/service/socket-service/socket.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSliderChange } from '@angular/material/slider';
+import { EventEmitter } from '@angular/core';
 
 interface currentsong {
   title: string,
@@ -18,6 +20,7 @@ export class PlayerComponent implements OnInit {
   mood = '';
   url = '';
 
+  @Output('change') matsliderchange: EventEmitter<MatSliderChange> = new EventEmitter<MatSliderChange>();
   
 
   @ViewChild('audioplayer') audioelement: ElementRef<HTMLAudioElement>;
@@ -41,6 +44,10 @@ export class PlayerComponent implements OnInit {
           this.url = `http://localhost:8001/live/${channel_token}/index.mpd`;
           console.log(this.url);
         })
+      });
+
+      this.matsliderchange.subscribe((value: MatSliderChange) => {
+        this.audioelement.nativeElement.volume = value.value;
       })
     }
 

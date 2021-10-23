@@ -42,3 +42,10 @@
     top: 2rem;
     position: absolute;
 }
+
+mat-slider {
+    align-self: center;
+    right: 2rem;
+    position: absolute;
+    height: 300px;
+}
