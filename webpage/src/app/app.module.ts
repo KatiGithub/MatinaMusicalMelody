@@ -20,7 +20,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 
-const config: SocketIoConfig = { url: 'http://6d73-183-88-56-193.ngrok.io', options: {
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
   autoConnect: true
 }}
 

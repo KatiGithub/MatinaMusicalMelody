@@ -12,7 +12,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ExpressService {
-  APIURL = 'http://e130-183-88-56-193.ngrok.io'
+  APIURL = 'http://localhost:3000'
   constructor(
     private http: HttpClient,
   ) { }
